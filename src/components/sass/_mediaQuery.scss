@@ -1,0 +1,38 @@
+@media (min-width: 992px) and (max-width: 1300px) {
+    .main-section {
+        .container-fluid {
+            max-width: 100%;
+            .row {
+                .col-cards {
+                    padding-right: 10px;
+                    padding-left: 10px;
+                    .box {
+                        .card {
+                            .buttons {
+                                .btn {
+                                    font-size: 14.5px;
+                                    margin-left: 5px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .top-btns {
+        left: 15px;
+        .btn {
+            width: 8rem;
+        }
+        .btn-table-prices {
+            font-size: 14px;
+        }
+    }
+    .btn-go-down,
+    .btn-go-up {
+        width: 100px;
+        font-size: 14px;
+        left: 15px;
+    }
+}
