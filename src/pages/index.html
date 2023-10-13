@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="fa">
+
+<head>
+    <title>
+        <%= htmlWebpackPlugin.options.title %>
+    </title>
+    <link rel="shortcut icon" href="./images/billiard.png">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body dir="rtl">
+
+    <!-- GO DOWN -->
+    <div class="top-btns d-flex flex-row justify-content-end">
+        <a href="#!" class="btn btn-table-prices btn-rounded bg-white ml-3">هزینه ها</a>
+        <a href="#go-down" class="btn btn-go-down btn-rounded bg-warning">مانده حساب ها</a>
+    </div>
+
+    <!-- TABLE PRICES AREA -->
+    <section id="side-menu">
+        <div class="content hidden">
+            <div class="close-menu"><a href="#!" class="close float-left text-white"><i class="fas fa-times"></i></a>
+            </div>
+            <div class="menu-top text-center">
+                <h3 class="top-title d-bock">Pasargad Billiard</h3>
+                <h3 class="top-title">بیلیارد پاسارگاد</h3>
+            </div>
+            <div class="menu">
+                <div class="menu-title text-center"><span>( هزینه ها بر اساس ساعت می باشند )</span>
+                </div>
+                <div class="menu-content">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="tbl-item-1 tbl-item first" id="tablePrice1">
+                                <label>میز 1 :</label>
+                                <div class="tbl-items">
+                                    <button class="btn btn-edit btn-rounded btn-outline-info">ویرایش</button>
+                                    <button class="btn btn-apply btn-rounded btn-outline-success" disabled>ثبت</button>
+                                    <div class="form-group mb-0">
+                                        <input type="text" id="table-price-1" class="form-control inputPriceValue" autocomplete="off" disabled>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="tbl-item-2 tbl-item" id="tablePrice2">
+                                <label>میز 2 :</label>
+                                <div class="tbl-items">
+                                    <button class="btn btn-edit btn-rounded btn-outline-info">ویرایش</button>
+                                    <button class="btn btn-apply btn-rounded btn-outline-success" disabled>ثبت</button>
+                                    <div class="form-group mb-0">
+                                        <input type="text" id="table-price-2" class="form-control inputPriceValue" autocomplete="off" disabled>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="tbl-item-3 tbl-item" id="tablePrice3">
+                                <label>میز 3 :</label>
+                                <div class="tbl-items">
+                                    <button class="btn btn-edit btn-rounded btn-outline-info">ویرایش</button>
+                                    <button class="btn btn-apply btn-rounded btn-outline-success" disabled>ثبت</button>
+                                    <div class="form-group mb-0">
+                                        <input type="text" id="table-price-3" class="form-control inputPriceValue" autocomplete="off" disabled>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="tbl-item-4 tbl-item" id="tablePrice4">
+                                <label>میز 4 :</label>
+                                <div class="tbl-items">
+                                    <button class="btn btn-edit btn-rounded btn-outline-info">ویرایش</button>
+                                    <button class="btn btn-apply btn-rounded btn-outline-success" disabled>ثبت</button>
+                                    <div class="form-group mb-0">
+                                        <input type="text" id="table-price-4" class="form-control inputPriceValue" autocomplete="off" disabled>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a href="#!" class="reset-tables btn btn-rounded btn-outline-warning">لغو ویرایشات</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- TABLE DISABLED MODAL -->
+    <div id="tdmodal">
+        <div class="box hide">
+            <div class="box-content">
+                <i class="fas fa-exclamation-triangle fa-2x"></i>
+                <p class="text">این میز غیر فعال شده است، برای فعال سازی هزینه میز را وارد کنید.</p>
+                <button class="btn btn-exit btn-rounded btn-secondary">خروج</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- HEADER TITLE -->
+    <div class="container" id="go-up">
+        <h1 class="main-title text-white text-center display-3">بیلیارد پاسارگاد</h1>
+        <br>
+        <hr class="bg-light">
+    </div>
+
+    <!-- ALERT -->
+    <p id="alert"></p>
+    <p id="alert_2"></p>
+    <p id="alert_3"></p>
+
+    <div class="card" id="question-alert">
+        <div class="card-body">
+            <h6 class="title text-center pb-2">آیا نسبت به حذف این حساب اطمینان دارید؟</h6>
+            <div class="del-btns text-center mt-4">
+                <a class="btn btn-success btn-rounded ml-3 yes-btn">بله</a>
+                <a class="btn btn-danger btn-rounded no-btn">خیر</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN PART -->
+    <section class="main-section">
+        <div class="container-fluid">
+            <div class="row justify-content-between">
+                <div class="col-sm-11 col-cards col-md-3">
+                    <div class="box">
+                        <div class="card card_1" data-table-number="1">
+                            <div class="card-header bg-success text-white">
+                                <h3 class="top-text">میز 1</h3>
+                                <h4 class="bottom-text">Table 1</h4>
+                            </div>
+                            <div class="card-body text-right">
+                                <div class="content">
+                                    <span id="input-name" hidden></span>
+                                    <div class="item user">
+                                        <span class="user-text">اسامی:</span>
+                                        <input type="text" id="inputname-1" class="form-control user-input" autocomplete="off">
+                                    </div>
+                                    <div class="time item">
+                                        <span class="time-text">زمان:</span>
+                                        <span class="time-item">
+                                            <label class="second-elem">00</label> :
+                                            <label class="minute-elem">00</label> :
+                                            <label class="hour-elem">00</label>
+                                        </span>
+                                    </div>
+                                    <div class="cost item">
+                                        <span class="cost-text">جمع حساب:</span>
+                                        <span class="cost-item"><span class="main-cost">0</span> تومان</span>
+                                    </div>
+                                </div>
+                                <div class="buttons">
+                                    <button class="btn btn-start btn-success btn-rounded" disabled>Start</button>
+                                    <button class="btn btn-cancel btn-secondary btn-rounded" disabled>Cancel</button>
+                                    <button class="btn btn-reset btn-primary btn-rounded" disabled>Reset</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-11 col-cards col-md-3">
+                    <div class="box">
+                        <div class="card card_2" data-table-number="2">
+                            <div class="card-header bg-success text-white">
+                                <h2 class="top-text">میز 2</h2>
+                                <h4 class="bottom-text">Table 2</h4>
+                            </div>
+                            <div class="card-body text-right">
+                                <div class="content">
+                                    <div class="item user">
+                                        <span class="user-text">اسامی:</span>
+                                        <input type="text" id="inputname-2" class="form-control user-input" autocomplete="off">
+                                    </div>
+                                    <div class="time item">
+                                        <span class="time-text">زمان:</span>
+                                        <span class="time-item">
+                                            <label class="second-elem">00</label> :
+                                            <label class="minute-elem">00</label> :
+                                            <label class="hour-elem">00</label>
+                                        </span>
+                                    </div>
+                                    <div class="cost item">
+                                        <span class="cost-text">جمع حساب:</span>
+                                        <span class="cost-item"><span class="main-cost">0</span> تومان</span>
+                                    </div>
+                                </div>
+                                <div class="buttons">
+                                    <button class="btn btn-start btn-success btn-rounded" disabled>Start</button>
+                                    <button class="btn btn-cancel btn-secondary btn-rounded" disabled>Cancel</button>
+                                    <button class="btn btn-reset btn-primary btn-rounded" disabled>Reset</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-11 col-cards col-md-3">
+                    <div class="box">
+                        <div class="card card_3" data-table-number="3">
+                            <div class="card-header bg-success text-white">
+                                <h2 class="top-text">میز 3</h2>
+                                <h4 class="bottom-text">Table 3</h4>
+                            </div>
+                            <div class="card-body text-right">
+                                <div class="content">
+                                    <div class="item user">
+                                        <span class="user-text">اسامی:</span>
+                                        <input type="text" id="inputname-3" class="form-control user-input" autocomplete="off">
+                                    </div>
+                                    <div class="time item">
+                                        <span class="time-text">زمان:</span>
+                                        <span class="time-item">
+                                            <label class="second-elem">00</label> :
+                                            <label class="minute-elem">00</label> :
+                                            <label class="hour-elem">00</label>
+                                        </span>
+                                    </div>
+                                    <div class="cost item">
+                                        <span class="cost-text">جمع حساب:</span>
+                                        <span class="cost-item"><span class="main-cost">0</span> تومان</span>
+                                    </div>
+                                </div>
+                                <div class="buttons">
+                                    <button class="btn btn-start btn-success btn-rounded" disabled>Start</button>
+                                    <button class="btn btn-cancel btn-secondary btn-rounded" disabled>Cancel</button>
+                                    <button class="btn btn-reset btn-primary btn-rounded" disabled>Reset</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-11 col-cards col-md-3">
+                    <div class="box">
+                        <div class="card card_4" data-table-number="4">
+                            <div class="card-header text-white">
+                                <h2 class="top-text">میز 4</h2>
+                                <h4 class="bottom-text">Table 4</h4>
+                                <div class="ps-title">
+                                    <h2 class="ps-text">PlayStation</h2>
+                                </div>
+                            </div>
+                            <div class="card-body text-right">
+                                <div class="content">
+                                    <div class="item user">
+                                        <span class="user-text">اسامی:</span>
+                                        <input type="text" id="inputname-4" class="form-control user-input" autocomplete="off">
+                                    </div>
+                                    <div class="time item">
+                                        <span class="time-text">زمان:</span>
+                                        <span class="time-item">
+                                            <label class="second-elem">00</label> :
+                                            <label class="minute-elem">00</label> :
+                                            <label class="hour-elem">00</label>
+                                        </span>
+                                    </div>
+                                    <div class="cost item">
+                                        <span class="cost-text">جمع حساب:</span>
+                                        <span class="cost-item"><span class="main-cost">0</span> تومان</span>
+                                    </div>
+                                </div>
+                                <div class="buttons">
+                                    <button class="btn btn-start btn-success btn-rounded" disabled>Start</button>
+                                    <button class="btn btn-cancel btn-secondary btn-rounded" disabled>Cancel</button>
+                                    <button class="btn btn-reset btn-primary btn-rounded" disabled>Reset</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ACCOUNTS -->
+    <section class="account" id="go-down">
+        <div class="container-fluid">
+            <div class="account-title d-flex flex-row align-items-center justify-content-between">
+                <h4>مانده حساب ها</h4>
+                <div class="form-group w-25 mb-0">
+                    <input type="search" id="search-input" class="form-control" placeholder="جستجو بر اساس نام">
+                </div>
+            </div>
+            <div class="account-content">
+                <div class="row justify-content-center">
+                    <div class="col-md-12">
+                        <table class="table">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>نام</th>
+                                    <th>شماره میز</th>
+                                    <th>زمان</th>
+                                    <th>مانده</th>
+                                    <th>حذف</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GO DOWN -->
+    <a href="#go-up" class="btn btn-go-up btn-rounded bg-warning">میزها</a>
+
+    <!-- FOOTER -->
+    <section class="footer">
+        <div class="footer-content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="footer-item">
+                            <span class="footer-text">ساعت :</span>
+                            <span class="hour"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="footer-item">
+                            <span class="footer-text">تاریخ :</span>
+                            <span class="date"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="footer-item">
+                            <span class="footer-text">میزهای فعال :</span>
+                            <span class="active-tables">0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="backdrop"></div>
+
+
+    <br><br><br>
+
+</body>
+
+</html>
